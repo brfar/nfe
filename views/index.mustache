@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="https://drive.google.com/uc?export=download&id=1xHrYNy2iouKUBU0YIm-sVvcMtWK_J2ci">
+</head>
+
+<body>
+  <div id="flex-item">
+    <div id="header">
+      <img src="https://image.ibb.co/ddvZK7/logogroup_ibis.png" alt="">
+      <h1>Log de Envio de NF-e</h1>
+    </div>
+
+    <form action="/todos" method="post">
+      <div class="ui form">
+        <div class="inline fields">
+          <div class="three wide field">
+            <input type="text" placeholder="RPS" name="description" autocomplete="off">
+          </div>
+
+          <div class="five wide field">
+            <input type="text" placeholder="Nome" name="nome" autocomplete="off">
+          </div>
+
+          <div class="six wide field">
+            <input type="email" placeholder="Email" name="email" autocomplete="off">
+          </div>
+          <button class="mini ui button" type="submit">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="flex-baby">
+
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>RPS</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Data</th>
+            <th>Enviei?</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#todos}}
+          <tr>
+            <form action="/todos/{{_id}}/completed" method="post">
+              <td onclick="copy(this)" class="att">{{description}}</td>
+              <td onclick="copy(this)" class="att">{{nome}}</td>
+              <td onclick="copy(this)" class="att">{{email}}</td>
+              <td>{{date}}</td>
+              <td>
+                <button class="circular ui icon button" type="submit">
+                  <i class="thumbs up outline icon"></i>
+                </button>
+              </td>
+            </form>
+          </tr>
+          {{/todos}}
+      </table>
+      <button class="ui button" id="hideShow">Mostrar Enviados</button>
+
+      <div class="esconder" id="esconde_e_mostra">
+        <h1>Notas Enviadas</h1>
+        <table class="ui striped table">
+          {{#doneTodos}}
+          <tr>
+            <form action="/todos/{{_id}}/completed" method="post">
+              <td onclick="copy(this)" class="caralho att">{{description}}</td>
+              <td onclick="copy(this)" class="att">{{nome}}</td>
+              <td onclick="copy(this)" class="att">{{email}}</td>
+              <td>{{date}}</td>
+              <td>
+                <button class="circular ui icon button keepList" type="submit">
+                  <i class="thumbs down outline icon"></i>
+                </button>
+              </td>
+            </form>
+          </tr>
+          {{/doneTodos}}
+        </table>
+        <button class="ui button" id="btnOculto">Ocultar Enviados</button>
+      </div>
+      </tbody>
+    </div>
+  </div>
+
+  <script src="https://dl.dropbox.com/s/atrjnmg4potbain/moment.js?dl=0"></script>
+  <script>
+    function copy(that) {
+      var inp = document.createElement('input');
+      document.body.appendChild(inp)
+      inp.value = that.textContent
+      inp.select();
+      document.execCommand('copy', false);
+      inp.remove();
+    }
+
+    var botaoMostrarEnviados = document.getElementById("hideShow");
+    var botaoOcultarEnviados = document.getElementById("btnOculto");
+    var listaNotasEnviadas = document.getElementById("esconde_e_mostra");
+
+    botaoMostrarEnviados.addEventListener("click", function (e) {
+      listaNotasEnviadas.classList.remove("fadeOut");
+      listaNotasEnviadas.classList.remove("esconder");
+      listaNotasEnviadas.classList.add("animated", "fadeIn");
+      botaoMostrarEnviados.classList.add("hide"); // remove botão quando clicado
+    });
+
+    botaoOcultarEnviados.addEventListener("click", function () {
+      botaoMostrarEnviados.classList.add("animated", "fadeIn");
+      listaNotasEnviadas.classList.remove("fadeIn");
+      listaNotasEnviadas.classList.add("fadeOut");
+      botaoMostrarEnviados.classList.remove("hide");
+      window.setTimeout(function () {
+        listaNotasEnviadas.classList.add("esconder");
+      }, 700);
+    });
+
+    var quantidade = document.getElementsByClassName("caralho");
+
+    if (quantidade.length === 0) {
+      botaoMostrarEnviados.classList.add("hide");
+    }
+
+    var elementos = document.querySelectorAll(".att");
+
+    elementos.forEach(function (elemento) {
+      elemento.addEventListener("click", function () {
+        elemento.classList.add("animated", "flash");
+        window.setTimeout(function () {
+          elemento.classList.remove("flash");
+        }, 900);
+      })
+    });
+
+    var keepList = document.querySelectorAll('.keepList');
+    keepList.forEach(function (e) {
+      e.addEventListener("click", function(){
+        listaNotasEnviadas.classList.remove("esconder");
+      });
+    });
+  </script>
+</body>
+
+</html>

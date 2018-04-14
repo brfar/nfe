@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Todos</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900i" rel="stylesheet">
+</head>
+
+<body>
+  <div id="flex-item">
+
+    <div id="header">
+      <img src="logogroup-ibis.png" alt="">
+      <h1>Log de Envio de NF-e</h1>
+    </div>
+
+    <form action="/todos" method="post">
+      <div class="ui form">
+        <div class="inline fields">
+          <div class="three wide field">
+            <input type="text" placeholder="RPS" name="description">
+          </div>
+
+          <div class="five wide field">
+            <input type="text" placeholder="Nome" name="nome">
+          </div>
+
+          <div class="six wide field">
+            <input type="email" placeholder="Email" name="email">
+          </div>
+          <button class="mini ui button" type="submit">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+<div id="flex-baby">
+    <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>RPS</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Data</th>
+            <th>Enviado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>93876</td>
+            <td>John Lilki</td>
+            <td>jhlilk22@yahoo.com</td>
+            <td>September 14, 2013</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>32327</td>
+            <td>Jamie Harington</td>
+            <td>jamieharingonton@yahoo.com</td>
+            <td>January 11, 2014</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>29384</td>
+            <td>Jill Lewis</td>
+            <td>jilsewris22@yahoo.com</td>
+            <td class="warning">May 11, 2014</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>23957</td>
+            <td>John Lilki</td>
+            <td>jhlilk22@yahoo.com</td>
+            <td>September 14, 2013</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>45233</td>
+            <td>John Lilki</td>
+            <td>jhlilk22@yahoo.com</td>
+            <td class="positive">September 14, 2013</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>23847</td>
+            <td>Jamie Harington</td>
+            <td>jamieharingonton@yahoo.com</td>
+            <td>January 11, 2014</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>32123</td>
+            <td>Jill Lewis</td>
+            <td>jilsewris22@yahoo.com</td>
+            <td class="negative">May 11, 2014</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>23987</td>
+            <td>John Lilki</td>
+            <td>jhlilk22@yahoo.com</td>
+            <td>September 14, 2013</td>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="public">
+                <label></label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+
+  </div>
+
+
+
+
+
+</body>
+
+</html>
