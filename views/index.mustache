@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Todos</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="https://drive.google.com/uc?export=download&id=1xHrYNy2iouKUBU0YIm-sVvcMtWK_J2ci">
+  <link rel="stylesheet" href="./libs/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="./libs/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="./libs/style.css">
 </head>
 
 <body>
   <div id="flex-item">
     <div id="header">
-      <img src="https://image.ibb.co/ddvZK7/logogroup_ibis.png" alt="">
+      <img src="./libs/logogroup-ibis.png" alt="">
       <h1>Log de Envio de NF-e</h1>
     </div>
 
@@ -93,62 +93,8 @@
     </div>
   </div>
 
-  <script src="https://dl.dropbox.com/s/atrjnmg4potbain/moment.js?dl=0"></script>
-  <script>
-    function copy(that) {
-      var inp = document.createElement('input');
-      document.body.appendChild(inp)
-      inp.value = that.textContent
-      inp.select();
-      document.execCommand('copy', false);
-      inp.remove();
-    }
-
-    var botaoMostrarEnviados = document.getElementById("hideShow");
-    var botaoOcultarEnviados = document.getElementById("btnOculto");
-    var listaNotasEnviadas = document.getElementById("esconde_e_mostra");
-
-    botaoMostrarEnviados.addEventListener("click", function (e) {
-      listaNotasEnviadas.classList.remove("fadeOut");
-      listaNotasEnviadas.classList.remove("esconder");
-      listaNotasEnviadas.classList.add("animated", "fadeIn");
-      botaoMostrarEnviados.classList.add("hide"); // remove botão quando clicado
-    });
-
-    botaoOcultarEnviados.addEventListener("click", function () {
-      botaoMostrarEnviados.classList.add("animated", "fadeIn");
-      listaNotasEnviadas.classList.remove("fadeIn");
-      listaNotasEnviadas.classList.add("fadeOut");
-      botaoMostrarEnviados.classList.remove("hide");
-      window.setTimeout(function () {
-        listaNotasEnviadas.classList.add("esconder");
-      }, 700);
-    });
-
-    var quantidade = document.getElementsByClassName("caralho");
-
-    if (quantidade.length === 0) {
-      botaoMostrarEnviados.classList.add("hide");
-    }
-
-    var elementos = document.querySelectorAll(".att");
-
-    elementos.forEach(function (elemento) {
-      elemento.addEventListener("click", function () {
-        elemento.classList.add("animated", "flash");
-        window.setTimeout(function () {
-          elemento.classList.remove("flash");
-        }, 900);
-      })
-    });
-
-    var keepList = document.querySelectorAll('.keepList');
-    keepList.forEach(function (e) {
-      e.addEventListener("click", function(){
-        listaNotasEnviadas.classList.remove("esconder");
-      });
-    });
-  </script>
+  <script src="./libs/moment.js"></script>
+  <script src="./libs/details.js"></script>
 </body>
 
 </html>
