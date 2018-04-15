@@ -5,17 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Todos</title>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <title>Log de Envio de NF-e</title>
+  <link rel="stylesheet" href="https://dl.dropbox.com/s/yjhi88uernkln6b/animate.min.css?dl=0">
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/site.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/button.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/icon.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/input.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/table.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/form.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"> -->
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900i" rel="stylesheet">
 </head>
 
 <body>
   <div id="flex-item">
-
     <div id="header">
-      <img src="logogroup-ibis.png" alt="">
+      <img src="https://dl.dropbox.com/s/yqm9wbtsa0mdno5/logogroup-ibis.png?dl=0" alt="">
       <h1>Log de Envio de NF-e</h1>
     </div>
 
@@ -23,141 +30,79 @@
       <div class="ui form">
         <div class="inline fields">
           <div class="three wide field">
-            <input type="text" placeholder="RPS" name="description">
+            <input type="text" placeholder="RPS" name="description" autocomplete="off">
           </div>
 
           <div class="five wide field">
-            <input type="text" placeholder="Nome" name="nome">
+            <input type="text" placeholder="Nome" name="nome" autocomplete="off">
           </div>
 
           <div class="six wide field">
-            <input type="email" placeholder="Email" name="email">
+            <input type="email" placeholder="Email" name="email" autocomplete="off">
           </div>
           <button class="mini ui button" type="submit">Enviar</button>
         </div>
       </div>
     </form>
 
-<div id="flex-baby">
-    <table class="ui striped table">
+    <div id="flex-baby">
+
+      <table class="ui striped table">
         <thead>
           <tr>
             <th>RPS</th>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Data</th>
-            <th>Enviado</th>
+            <th>Enviei?</th>
           </tr>
         </thead>
         <tbody>
+          {{#todos}}
           <tr>
-            <td>93876</td>
-            <td>John Lilki</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td>September 14, 2013</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
+            <form action="/todos/{{_id}}/completed" method="post">
+              <td onclick="copy(this)" class="att">{{description}}</td>
+              <td onclick="copy(this)" class="att">{{nome}}</td>
+              <td onclick="copy(this)" class="att">{{email}}</td>
+              <td>{{date}}</td>
+              <td>
+                <button class="circular ui icon button" type="submit">
+                  <i class="thumbs up outline icon"></i>
+                </button>
+              </td>
+            </form>
           </tr>
-          <tr>
-            <td>32327</td>
-            <td>Jamie Harington</td>
-            <td>jamieharingonton@yahoo.com</td>
-            <td>January 11, 2014</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>29384</td>
-            <td>Jill Lewis</td>
-            <td>jilsewris22@yahoo.com</td>
-            <td class="warning">May 11, 2014</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>23957</td>
-            <td>John Lilki</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td>September 14, 2013</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45233</td>
-            <td>John Lilki</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td class="positive">September 14, 2013</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>23847</td>
-            <td>Jamie Harington</td>
-            <td>jamieharingonton@yahoo.com</td>
-            <td>January 11, 2014</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>32123</td>
-            <td>Jill Lewis</td>
-            <td>jilsewris22@yahoo.com</td>
-            <td class="negative">May 11, 2014</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>23987</td>
-            <td>John Lilki</td>
-            <td>jhlilk22@yahoo.com</td>
-            <td>September 14, 2013</td>
-            <td>
-              <div class="ui toggle checkbox">
-                <input type="checkbox" name="public">
-                <label></label>
-              </div>
-            </td>
-          </tr>
-        </tbody>
+          {{/todos}}
       </table>
-</div>
+      <button class="ui button" id="hideShow">Mostrar Enviados</button>
 
-
-
+      <div class="esconder" id="esconde_e_mostra">
+        <h1>Notas Enviadas</h1>
+        <table class="ui striped table">
+          {{#doneTodos}}
+          <tr>
+            <form action="/todos/{{_id}}/completed" method="post">
+              <td onclick="copy(this)" class="caralho att">{{description}}</td>
+              <td onclick="copy(this)" class="att">{{nome}}</td>
+              <td onclick="copy(this)" class="att">{{email}}</td>
+              <td>{{date}}</td>
+              <td>
+                <button class="circular ui icon button keepList" type="submit">
+                  <i class="thumbs down outline icon"></i>
+                </button>
+              </td>
+            </form>
+          </tr>
+          {{/doneTodos}}
+        </table>
+        <button class="ui button" id="btnOculto">Ocultar Enviados</button>
+      </div>
+      </tbody>
+    </div>
   </div>
 
-
-
-
-
+  <script src="https://dl.dropbox.com/s/rakkwdvocf9ux2b/moment.js?dl=0"></script>
+  <script src="https://dl.dropbox.com/s/vwapk3nyj4iwwmf/details.js?dl=0"></script>
 </body>
 
 </html>
