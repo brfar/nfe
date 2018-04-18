@@ -46,7 +46,8 @@
             <th>Nome</th>
             <th>E-mail</th>
             <th>Data</th>
-            <th>Enviei?</th>
+            <th>Enviar</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -57,9 +58,9 @@
               <td onclick="copy(this)" class="att">{{nome}}</td>
               <td onclick="copy(this)" class="att">{{email}}</td>
               <td>{{date}}</td>
-              <td>
-                <button class="circular ui icon button" type="submit">
-                  <i class="thumbs up outline icon"></i>
+              <td><a href="{{link}}" class="mini ui button" target="_blank">Enviar NF-e</a></td>
+              <td><button class="circular ui icon button" type="submit">
+                <i class="thumbs up outline icon"></i>
                 </button>
               </td>
             </form>

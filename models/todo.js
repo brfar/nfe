@@ -10,7 +10,7 @@ let todoSchema = new Schema({
   },
   nome: {
     type: String,
-    required: true
+    // required: true
   },
   email: {
     type: String,
@@ -21,6 +21,9 @@ let todoSchema = new Schema({
     default: false
   }, 
   date: {
+    type: String
+  }, 
+  link: {
     type: String
   }
 });
