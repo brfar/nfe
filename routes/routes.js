@@ -26,7 +26,8 @@ router.post('/todos', function(req, res) {
     nome: req.body.nome,
 		email: req.body.email,
 		date: moment().format("DD-MM-YYYY"),
-		link: `https://nfse.recife.pe.gov.br/contribuinte/notaprint.aspx?nf=${req.body.description}&inscricao=5333512&verificacao=${verifica}`,
+		// link: `https://nfse.recife.pe.gov.br/contribuinte/notaprint.aspx?nf=${req.body.description}&inscricao=5333512&verificacao=${verifica}`,
+		link: `https://nfse.recife.pe.gov.br/contribuinte/NotasEmitidas.aspx?Inscricao=5333512&Inicio=${moment().date()}%2f${moment().month()+1}%2f${moment().year()}&Fim=${moment().date()}%2f${moment().month()+1}%2f${moment().year()}&Nome=${req.body.nome}&returnUrl=~%2fcontribuinte%2fConsultas.aspx%3fInscricao%3d5333512%26Inicio%3d${moment().date()}%252f${moment().month()+1}%252f${moment().year()}%26Fim%3d${moment().date()}%252f${moment().month()+1}%252f${moment().year()}%26Nome%3d${req.body.nome}`
   });
 	newTodo
 		.save()
