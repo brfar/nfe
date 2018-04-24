@@ -3,6 +3,11 @@ const router = require('express').Router();
 const Todo = require('../models/todo');
 const moment = require('moment');
 
+var diaInicio = moment().subtract(2, "days").format("DD");
+var diaHoje = moment().format("DD");
+var mes = moment().format("MM");
+var ano = moment().format("YYYY");
+
 router.get('/', function(req, res) {
 	Todo.find({}).then(function(results) {
     let todos = results.filter(function(todo){
@@ -18,16 +23,12 @@ router.get('/', function(req, res) {
 });
 
 router.post('/todos', function(req, res) {
-	// console.log('***********');
-	// console.log(req.body.description);  // ESSE É O RPS
-	var verifica = geraCodigo();
 	let newTodo = new Todo({ 
     description: req.body.description,
     nome: req.body.nome,
 		email: req.body.email,
 		date: moment().format("DD-MM-YYYY"),
-		// link: `https://nfse.recife.pe.gov.br/contribuinte/notaprint.aspx?nf=${req.body.description}&inscricao=5333512&verificacao=${verifica}`,
-		link: `https://nfse.recife.pe.gov.br/contribuinte/NotasEmitidas.aspx?Inscricao=5333512&Inicio=${moment().date()}%2f${moment().month()+1}%2f${moment().year()}&Fim=${moment().date()}%2f${moment().month()+1}%2f${moment().year()}&Nome=${req.body.nome}&returnUrl=~%2fcontribuinte%2fConsultas.aspx%3fInscricao%3d5333512%26Inicio%3d${moment().date()}%252f${moment().month()+1}%252f${moment().year()}%26Fim%3d${moment().date()}%252f${moment().month()+1}%252f${moment().year()}%26Nome%3d${req.body.nome}`
+		link: `https://nfse.recife.pe.gov.br/contribuinte/NotasEmitidas.aspx?Inscricao=5333512&Inicio=${diaInicio}%2f${mes}%2f${ano}&Fim=${diaHoje}%2f${mes}%2f${ano}&Nome=${req.body.nome}&returnUrl=~%2fcontribuinte%2fConsultas.aspx%3fInscricao%3d5333512%26Inicio%3d${diaInicio}%252f${mes}%252f${ano}%26Fim%3d${diaHoje}%252f${mes}%252f${ano}%26Nome%3d${req.body.nome}`
   });
 	newTodo
 		.save()
@@ -40,16 +41,6 @@ router.post('/todos', function(req, res) {
 			res.redirect('/');
 		});
 });
-
-function geraCodigo(){
-	var codigo = "";
-	var alfa = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-	for (var i=0; i<8; i++){
-		var ran = Math.floor(Math.random()*36);
-		codigo += alfa[ran];
-	}
-	return codigo;
-}
 
 router.post('/todos/:id/completed', function(req, res) {
 	let todoId = req.params.id;
