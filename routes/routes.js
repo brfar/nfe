@@ -3,10 +3,8 @@ const router = require('express').Router();
 const Todo = require('../models/todo');
 const moment = require('moment');
 
-var diaInicio = moment().subtract(2, "days").format("DD");
-var diaHoje = moment().format("DD");
-var mes = moment().format("MM");
-var ano = moment().format("YYYY");
+var diaInicio = moment().subtract(2, "days").format("DD%2fMM%2fYYYY");
+var diaHoje = moment().format("DD%2fMM%2fYYYY"); 
 
 router.get('/', function(req, res) {
 	Todo.find({}).then(function(results) {
@@ -28,7 +26,7 @@ router.post('/todos', function(req, res) {
     nome: req.body.nome,
 		email: req.body.email,
 		date: moment().format("DD-MM-YYYY"),
-		link: `https://nfse.recife.pe.gov.br/contribuinte/NotasEmitidas.aspx?Inscricao=5333512&Inicio=${diaInicio}%2f${mes}%2f${ano}&Fim=${diaHoje}%2f${mes}%2f${ano}&Nome=${req.body.nome}&returnUrl=~%2fcontribuinte%2fConsultas.aspx%3fInscricao%3d5333512%26Inicio%3d${diaInicio}%252f${mes}%252f${ano}%26Fim%3d${diaHoje}%252f${mes}%252f${ano}%26Nome%3d${req.body.nome}`
+		link: `https://nfse.recife.pe.gov.br/contribuinte/NotasEmitidas.aspx?Inscricao=5333512&Inicio=${diaInicio}&Fim=${diaHoje}&Nome=${req.body.nome}&returnUrl=~%2fcontribuinte%2fConsultas.aspx%3fInscricao%3d5333512%26Inicio%3d${diaInicio}%26Fim%3d${diaHoje}%26Nome%3d${req.body.nome}`
   });
 	newTodo
 		.save()
